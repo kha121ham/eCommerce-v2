@@ -5,7 +5,8 @@ import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js';
 const port = process.env.PORT || 5000 ;
 import productRoutes from './routes/productRoutes.js';
-import userRoutes from './routes/userRoutes.js'
+import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 const app = express();
 
@@ -27,6 +28,7 @@ app.get('/', (req, res)=> {
 //Define routes
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
 
 //error middleware
 app.use(notFound);
