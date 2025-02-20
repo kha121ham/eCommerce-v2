@@ -33,11 +33,10 @@ const OrderScreen = () => {
                 });
 
                 paypalDispatch({ type: 'setLoadingStatus', value : 'pending' });
-
-                if(order && !order.isPaid) {
-                    if(window.paypal) {
-                        loadPayPalScript();
-                    }
+            }
+            if(order && !order.isPaid) {
+                if(!window.paypal) {
+                    loadPayPalScript();
                 }
             }
         }
