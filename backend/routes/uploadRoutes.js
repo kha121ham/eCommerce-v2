@@ -1,15 +1,16 @@
 import path from 'path';
 import express from 'express';
 import multer from 'multer';
+
 const router = express.Router();
 
 
 const storage = multer.diskStorage({
-    destination(req,file,cp) {
-        cb(null, 'upload/'); //null is for error
+    destination(req, file, cb) {
+        cb(null, 'uploads/');
     },
-    filename(req,file, cb) {
-        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`)
+    filename(req, file, cb) {
+        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     }
 });
 
@@ -23,19 +24,17 @@ function checkFileType(file, cb) {
     } else {
         cb('Image only!');
     }
-};
+}
 
 const upload = multer({
-    storage
+    storage,
 });
 
-router.post('/', upload.single('image'), (req,res) => {
+router.post('/', upload.single('image'), (req, res) => {
     res.send({
-        message: 'Image uploaded',
+        message: 'Image Uploaded',
         image: `/${req.file.path}`,
     });
 });
-
-
 
 export default router;
