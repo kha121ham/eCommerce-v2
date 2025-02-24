@@ -122,7 +122,6 @@ const ProductEditScreen = () => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
-              {loadingUpload && <Loader />}
               <Form.Control
                 type='file'
                 label='Choose file'
@@ -130,6 +129,8 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
+            {loadingUpload && <Loader />}
+            
             <Form.Group controlId='brand' className='my-2'>
               <Form.Label>Brand</Form.Label>
               <Form.Control
