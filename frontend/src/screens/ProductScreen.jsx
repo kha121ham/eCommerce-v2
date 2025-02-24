@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   Row,
@@ -11,8 +10,6 @@ import {
   Button,
   FormControl,
   Form,
-  option,
-  ListGroupItem,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useGetProductDetailsQuery, useCreateReviewsMutation } from "../slices/productsApiSlice";
