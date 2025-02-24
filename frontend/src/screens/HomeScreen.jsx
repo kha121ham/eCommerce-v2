@@ -5,13 +5,14 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { Link, useParams } from 'react-router-dom';
 import Paginate from '../components/Paginate';
+import ProudctCarousel from '../components/ProudctCarousel';
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
 const { data, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });
   return (
     <>
-    { keyword && <Link to='/' className='btn btn-light mb-4'>Go Back</Link> }
+    { !keyword ? <ProudctCarousel /> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link> }
     {isLoading ? (
       <Loader />
       ) : error ? (
