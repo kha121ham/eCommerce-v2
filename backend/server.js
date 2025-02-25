@@ -22,10 +22,6 @@ app.use(cookieParser());
 //Connect DB 
 connectDB();
 
-//Start app
-app.get('/', (req, res)=> {
-    res.send('API is running...');
-});
 
 //Define routes
 app.use('/api/products', productRoutes);
@@ -39,6 +35,21 @@ app.get('/api/config/paypal', (req,res)=> res.send({ clientId: process.env.PAYPA
 //Set __dirname to current dir
 const __dirname = path.resolve();
 app.use('/uploads',express.static(path.join(__dirname, '/uploads')));
+
+if (process.env.NODE_ENV === 'production') {
+    //set static folder
+    app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+    //any route that is not api will be redirect to index.html
+    app.get('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    });
+    } else {
+        //Start app
+        app.get('/', (req, res)=> {
+            res.send('API is running...');
+            });
+    } 
 
 //error middleware
 app.use(notFound);
