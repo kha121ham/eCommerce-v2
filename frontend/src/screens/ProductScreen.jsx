@@ -65,7 +65,6 @@ const ProductScreen = () => {
   }
   return (
     <>
-    <Meta title={product.name} />
       <Link className='btn btn-light my-3' to='/'>
         Go Back
       </Link>
@@ -77,8 +76,9 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
+        <Meta title={product.name} />
         <Row>
-          <Col md={4}>
+          <Col md={5}>
             <Image src={product.image} alt={product.name} fluid />
           </Col>
           <Col md={4}>

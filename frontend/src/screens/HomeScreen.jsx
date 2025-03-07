@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import Paginate from '../components/Paginate';
 import ProudctCarousel from '../components/ProudctCarousel';
 
+
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
 const { data, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });

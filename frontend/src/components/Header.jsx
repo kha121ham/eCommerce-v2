@@ -7,6 +7,8 @@ import { useLogoutMutation } from '../slices/usersApiSlice';
 import  { logout }  from '../slices/authSlice'
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBox from './SearchBox';
+import { resetCart } from '../slices/cartSlice';
+
 
 const Header = () => {
   const { cartItems } = useSelector((state)=>state.cart);
@@ -21,14 +23,15 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate('/login')
+      navigate('/login');
+      dispatch(resetCart());
     } catch (err) {
       
     }
   }
   return (
     <header>
-        <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+        <Navbar className='custom-navbar' variant="dark" expand="md" collapseOnSelect>
             <Container>
                 <LinkContainer to='/'>
                 <Navbar.Brand>

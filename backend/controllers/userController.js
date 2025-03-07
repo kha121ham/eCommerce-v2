@@ -1,6 +1,5 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
-import jwt from 'jsonwebtoken';
 import generateToken from '../utlis/generateToken.js';
 import { Error } from 'mongoose';
 // @desc    Auth user && get token
