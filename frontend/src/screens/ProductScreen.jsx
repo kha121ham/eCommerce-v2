@@ -36,7 +36,6 @@ const ProductScreen = () => {
     isLoading,
     error,
   } = useGetProductDetailsQuery(productId);
-
   const [createReview, { isLoading: loadingProductReview, }] = useCreateReviewsMutation();
 
   const { userInfo } = useSelector((state) => state.auth);

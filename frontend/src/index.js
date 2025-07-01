@@ -71,7 +71,7 @@ root.render(
   <HelmetProvider>
   <Provider store={store} >
     <PayPalScriptProvider deferLoading={true}>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </PayPalScriptProvider>
   </Provider>
   </HelmetProvider>
